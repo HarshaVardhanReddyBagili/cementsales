@@ -4,4 +4,4 @@ pandas==1.5.1
 streamlit==1.13.0
 openpyxl==3.0.10
 pmdarima==2.0.2
-autots==0.5.4
+AutoTS==0.5.4
