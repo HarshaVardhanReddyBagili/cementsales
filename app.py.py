@@ -19,7 +19,7 @@ if uploaded_file is not None:
              ensemble= None, model_list = 'univariate', max_generations = 3, num_validations= 2,
              no_negatives = True,n_jobs = 'auto')
 
-    mod = mod.fit(Test, date_col='Month', value_col='Sales')
+    mod = mod.fit(cement.Sales, date_col='Month', value_col='Sales')
     prediction = mod.predict()
     
     forecast = prediction.forecast
