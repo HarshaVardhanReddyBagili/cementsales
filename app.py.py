@@ -8,15 +8,15 @@ import matplotlib.pyplot as plt
 #from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from autots import AutoTS
 
-st.title('Forecasting the Cement Sales')
-uploaded_file = st.file_uploader(" ", type=['xlsx'])
 html_temp = """
 <div style="background-color:fuchsia;padding:10px">
-<h2 style="color:white;text-align:center;">Forecasting </h2>
+<h2 style="color:white;text-align:center;">Forecasting The Cement Sales </h2>
 </div>
 """
 st.markdown(html_temp, unsafe_allow_html = True)
 st.text("")
+uploaded_file = st.file_uploader(" ", type=['xlsx'])
+
 if uploaded_file is not None:     
     cement = pd.read_excel(uploaded_file)
     cement['Month'] = cement['Month'].apply(lambda x: x.strftime('%B-%Y'))
