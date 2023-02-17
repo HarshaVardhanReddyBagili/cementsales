@@ -20,6 +20,11 @@ st.text("")
 if uploaded_file is not None:     
     cement = pd.read_excel(uploaded_file)
     cement['Month'] = cement['Month'].apply(lambda x: x.strftime('%B-%Y'))
+    html_temp = """
+    <div style="background-color:tomato;padding:10px">
+    <p style="color:white;text-align:center;">Add DataBase Credientials </p>
+    </div>
+    """
     st.write("Plese wait for the forecasting result... Model is working on it")
     
     mod = AutoTS(forecast_length=12, frequency='M', prediction_interval = 0.90,
