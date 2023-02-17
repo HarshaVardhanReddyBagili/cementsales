@@ -11,7 +11,7 @@ from autots import AutoTS
 st.title('Forecasting the Cement Sales')
 uploaded_file = st.file_uploader(" ", type=['xlsx'])
 html_temp = """
-<div style="background-color:tomato;padding:10px">
+<div style="background-color:olive;padding:10px">
 <h2 style="color:white;text-align:center;">Forecasting </h2>
 </div>
 """
