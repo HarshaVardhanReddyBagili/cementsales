@@ -30,8 +30,8 @@ if uploaded_file is not None:
     forecast = prediction.forecast
     
     cm = sns.light_palette("purple", as_cmap=True)
-    st.table(forecast.style.background_gradient(cmap=cm).set_precision(2))
+    reuslt = st.table(forecast.style.background_gradient(cmap=cm).set_precision(2))
     
-    st.subheader("From AutoTS model")
+    st.subheader("Here we have the result")
    
-    st.write("Forecast of Sales for next 12 months: ", forecast)
+    st.write("Forecast of Sales for next 12 months: ", reuslt)
