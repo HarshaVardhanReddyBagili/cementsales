@@ -29,7 +29,7 @@ if uploaded_file is not None:
     
     forecast = prediction.forecast
     
-    cm = sns.light_palette("blue", as_cmap=True)
+    cm = sns.light_palette("purple", as_cmap=True)
     st.table(forecast.style.background_gradient(cmap=cm).set_precision(2))
     
     st.subheader("From AutoTS model")
