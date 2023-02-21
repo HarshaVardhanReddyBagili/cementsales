@@ -10,15 +10,14 @@ html_temp = """
 <h2 style="color:white;text-align:center;">Forecasting The Cement Sales </h2>
 </div>
 """
-if st.button("Predict"):
-    st.markdown(html_temp, unsafe_allow_html = True)
-    st.text("")
-    uploaded_file = st.file_uploader(" ", type=['xlsx'])
+st.markdown(html_temp, unsafe_allow_html = True)
+st.text("")
+uploaded_file = st.file_uploader(" ", type=['xlsx'])
 
-    if uploaded_file is not None:
-        cement = pd.read_excel(uploaded_file)
-        cement['Month'] = cement['Month'].apply(lambda x: x.strftime('%B-%Y'))
-
+if uploaded_file is not None:        
+    cement = pd.read_excel(uploaded_file)
+    cement['Month'] = cement['Month'].apply(lambda x: x.strftime('%B-%Y'))
+    if st.button("Predict"):
         st.write("Plese wait for the forecasting result... Model is working on it")
     
         mod = AutoTS(forecast_length=12, frequency='M', prediction_interval = 0.90,
