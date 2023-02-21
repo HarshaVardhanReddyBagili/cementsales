@@ -2,10 +2,6 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-#from statsmodels.tsa.seasonal import seasonal_decompose
-#from statsmodels.tsa.holtwinters import SimpleExpSmoothing # SES
-#from statsmodels.tsa.holtwinters import Holt # Holts Exponential Smoothing
-#from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from autots import AutoTS
 import seaborn as sns
 
