@@ -25,7 +25,7 @@ if uploaded_file is not None:
     
     mod = AutoTS(
     forecast_length=12,
-    frequency='infer',
+    frequency='M',
     prediction_interval=0.9,
     ensemble=None,
     model_list="superfast",
