@@ -31,6 +31,9 @@ if uploaded_file is not None:
     prediction = mod.predict()
     
     forecast = prediction.forecast
+    import seaborn as sns
+    cm = sns.light_palette("blue", as_cmap=True)
+    st.table(forecast.style.background_gradient(cmap=cm).set_precision(2))
     
     st.subheader("From AutoTS model")
    
