@@ -23,17 +23,9 @@ if uploaded_file is not None:
 
     st.write("Plese wait for the forecasting result... Model is working on it")
     
-    mod = AutoTS(
-    forecast_length=12,
-    frequency='M',
-    prediction_interval=0.9,
-    ensemble=None,
-    model_list="superfast",
-    transformer_list="superfast",
-    max_generations=4,
-    num_validations=2,
-    validation_method="backwards"
-)
+    mod = AutoTS(forecast_length=12, frequency='M', prediction_interval = 0.90,
+             ensemble= None, model_list = 'superfast', max_generations = 4, num_validations= 2,
+             no_negatives = True,n_jobs = 'auto'))
 
     mod = mod.fit(cement, date_col='Month', value_col='Sales')
     prediction = mod.predict()
