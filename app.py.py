@@ -28,10 +28,9 @@ if uploaded_file is not None:
     prediction = mod.predict()
     
     forecast = prediction.forecast
-    
-    cm = sns.light_palette("purple", as_cmap=True)
-    reuslt = st.table(forecast.style.background_gradient(cmap=cm).set_precision(2))
-    
     st.subheader("Here we have the result")
-   
-    st.write("Forecast of Sales for next 12 months: ", reuslt)
+    cm = sns.light_palette("purple", as_cmap=True)
+    st.write("Forecast of Sales for next 12 months: ",st.table(forecast.style.background_gradient(cmap=cm).set_precision(2)))
+    
+    
+
