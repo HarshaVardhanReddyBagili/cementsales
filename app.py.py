@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 #from statsmodels.tsa.holtwinters import Holt # Holts Exponential Smoothing
 #from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from autots import AutoTS
+import seaborn as sns
 
 html_temp = """
 <div style="background-color:fuchsia;padding:10px">
@@ -31,7 +32,7 @@ if uploaded_file is not None:
     prediction = mod.predict()
     
     forecast = prediction.forecast
-    import seaborn as sns
+    
     cm = sns.light_palette("blue", as_cmap=True)
     st.table(forecast.style.background_gradient(cmap=cm).set_precision(2))
     
