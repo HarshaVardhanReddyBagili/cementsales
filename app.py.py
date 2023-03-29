@@ -11,7 +11,6 @@ from streamlit_pandas_profiling import st_profile_report
 from prophet import Prophet
 from prophet.plot import plot_plotly
 
-[theme]
 base="dark"
 primaryColor="purple"
 st.title('Cement Sales Forecasting')
