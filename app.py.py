@@ -10,18 +10,10 @@ from pandas_profiling import ProfileReport
 from streamlit_pandas_profiling import st_profile_report
 from prophet import Prophet
 from prophet.plot import plot_plotly
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-html_temp = """
-<div style="background-color:fuchsia;padding:10px">
-<h2 style="color:white;text-align:center;">Forecasting The Cement Sales </h2>
-</div>
-"""
-st.markdown(html_temp, unsafe_allow_html = True)
-st.text("")
-uploaded_file = st.file_uploader(" ", type=['xlsx'])
+st.title('Cement Sales Forecasting')
 
+data = st.file_uploader(' ',type='Xlsx')
 if data is not None:
   df = pd.read_excel(data)
   df = df.rename(columns={'Date':'ds', 'Sales_Quantity_Milliontonnes': 'y'})
@@ -66,14 +58,11 @@ if data is not None:
   forecasts = pd.DataFrame(test_forecasts[['ds', 'yhat', 'yhat_upper', 'yhat_lower']])
   forecasts.rename(columns = {'ds' : 'Date', 'yhat' : 'Sales_Forecast', 'yhat_upper' : 'Sales_Max_Forecast', 'yhat_lower' : 'Sales_Min_Forecast'}, inplace = True)
   forecasts = forecasts.tail(12)
-  
-  st.subheader("Here we have the sales for next 12 months:")
-  cm = sns.light_palette("teal", as_cmap=True)
-  st.table(forecast.style.background_gradient(cmap=cm).set_precision(2))
-    
+  st.header('Forecasts')
+  st.write(forecasts)
+
   st.header('Sales Graph')
   figure2 = plot_plotly(model, test_forecasts, xlabel = 'Date', ylabel = 'Sales_Milliontonnes')
-  st.write(figure2)      
-       
+  st.write(figure2)
     
 
