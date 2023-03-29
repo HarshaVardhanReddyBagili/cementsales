@@ -11,20 +11,17 @@ from streamlit_pandas_profiling import st_profile_report
 from prophet import Prophet
 from prophet.plot import plot_plotly
 
-base="dark"
-primaryColor="purple"
 st.title('Cement Sales Forecasting')
 data = st.file_uploader(' ',type='Xlsx')
 if data is not None:
   df = pd.read_excel(data)
   df = df.rename(columns={'Date':'ds', 'Sales_Quantity_Milliontonnes': 'y'})
   df['ds'] = pd.to_datetime(df['ds']) 
-  
-  from pandas_profiling import ProfileReport
-  
-  profile = ProfileReport(df, tsmode=True, sortby="ds")
-  st.header("Pandas Profiling Report")
-  st_profile_report(profile)
+  if st.button("AutoEDA Reourt"):
+     from pandas_profiling import ProfileReport
+     profile = ProfileReport(df, tsmode=True, sortby="ds")
+     st.header("Pandas Profiling Report")
+     st_profile_report(profile)
   
   from feature_engine.outliers import Winsorizer
   winsor = Winsorizer(capping_method='iqr', tail='both', fold=1.5, variables=['GDP_Construction_Rs_Crs', 'Oveall_GDP_Growth%',
