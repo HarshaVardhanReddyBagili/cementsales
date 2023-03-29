@@ -28,7 +28,7 @@ if data is not None:
                                                                           'Oveall_GDP_Growth%', 'Coal_Milliontonne', 'Home_Interest_Rate']])
   
   st.write(df)
-  if st.button("AutoEDA Reourt"):
+  if st.button("Click Here For AutoEDA Report"):
    from pandas_profiling import ProfileReport
    profile = ProfileReport(df, tsmode=True, sortby="ds")
    st.header("Pandas Profiling Report")
