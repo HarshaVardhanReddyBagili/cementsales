@@ -17,11 +17,6 @@ if data is not None:
   df = pd.read_excel(data)
   df = df.rename(columns={'Date':'ds', 'Sales_Quantity_Milliontonnes': 'y'})
   df['ds'] = pd.to_datetime(df['ds']) 
-  if st.button("AutoEDA Reourt"):
-     from pandas_profiling import ProfileReport
-     profile = ProfileReport(df, tsmode=True, sortby="ds")
-     st.header("Pandas Profiling Report")
-     st_profile_report(profile)
   
   from feature_engine.outliers import Winsorizer
   winsor = Winsorizer(capping_method='iqr', tail='both', fold=1.5, variables=['GDP_Construction_Rs_Crs', 'Oveall_GDP_Growth%',
@@ -33,7 +28,12 @@ if data is not None:
                                                                           'Oveall_GDP_Growth%', 'Coal_Milliontonne', 'Home_Interest_Rate']])
   
   st.write(df)
-
+  if st.button("AutoEDA Reourt"):
+   from pandas_profiling import ProfileReport
+   profile = ProfileReport(df, tsmode=True, sortby="ds")
+   st.header("Pandas Profiling Report")
+   st_profile_report(profile)
+    
   train = df.iloc[:84]
   test = df.iloc[84:]
   if train is not None:
