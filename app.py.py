@@ -15,7 +15,6 @@ from prophet.plot import plot_plotly
 base="dark"
 primaryColor="purple"
 st.title('Cement Sales Forecasting)'
-
 data = st.file_uploader(' ',type='Xlsx')
 if data is not None:
   df = pd.read_excel(data)
