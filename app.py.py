@@ -11,11 +11,10 @@ from streamlit_pandas_profiling import st_profile_report
 from prophet import Prophet
 from prophet.plot import plot_plotly
 
-st.title(html_temp = """
-<div style="background-color:fuchsia;padding:10px">
-<h2 style="color:white;text-align:center;">Forecasting The Cement Sales </h2>
-</div>
-""")
+[theme]
+base="dark"
+primaryColor="purple"
+st.title('Cement Sales Forecasting)'
 
 data = st.file_uploader(' ',type='Xlsx')
 if data is not None:
